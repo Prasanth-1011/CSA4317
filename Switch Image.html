@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Image Display</title>
+<style>
+
+img {max-width: 100%; height: auto; display: block; margin: 20px auto;}
+</style>
+</head>
+
+<body>
+<button onclick="One()">One</button>
+<button onclick="Two()">Two</button>
+<img src='Photos/IMG_20220121_234720.jpg';
+<img id="Image">
+
+<script>
+function One(){document.getElementById('Image').src = 'Photos/IMG_20220121_234720.jpg';}
+function Two(){document.getElementById('Image').src = 'Photos/IMG_20220121_235005.jpg';}
+</script>
+
+</body>
+</html>

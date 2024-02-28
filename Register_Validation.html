@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>
+        Register User Details
+    </title>
+    <Style>
+        body {
+            text-align: center;
+            align-items: center;
+        }
+
+        form {
+            padding: 30px;
+            display: block;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            border: 1px solid; width: fit-content;
+        }
+        input, label {
+            padding: 10px;
+            margin: 10px;
+        }
+
+    </Style>
+</head>
+
+<body>
+    <form onsubmit="Validate()">
+        <label>Username</label>
+        <input type="text" id="name" placeholder="Enter Username" required><br>
+        <label>Mail</label>
+        <input type="text" id="mail" placeholder="Enter Mail" required><br>
+        <label>Password</label>
+        <input type="password" id="pass" placeholder="Enter Password" required><br>
+        <label>Confirm Password</label>
+        <input type="password" id="repass" placeholder="Enter Password Again" required><br>
+
+        <input type="submit" value="Register Details">
+    </form>
+</body>
+<script>
+    function Validate() {
+        var name = document.getElementById('name').value;
+        var password = document.getElementById('pass').value;
+        var repass = document.getElementById('repass').value;
+
+        if (password != repass) {
+            alert("Please Enter Same Password");
+        }
+        else if (!Username(name)) {
+            alert("Enter Valid Username");
+        }
+        else if (!Mail(mail)) {
+            alert("Enter Valid Mail Address");
+        }
+        else {
+            alert("Registered Successfully!");
+        }
+    }
+
+    function Username(name) {
+        var usernameRegex = /^[A-Z]{1}[a-z]{3,9}$/;
+        return usernameRegex.test(name);
+    }
+
+    function Mail(mail) {
+        var mailRegex = /^[a-z0-9./]{4,10}[@][a-z0-9]{4,5}[.com]$/;
+        return mailRegex.test(mail);
+    }
+</script>
+
+</html>
