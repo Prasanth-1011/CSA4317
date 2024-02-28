@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        Task Tracker
+    </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: darkviolet;
+            color: darkslategray;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: lawngreen;
+            font-size: 90px;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid lawngreen;
+        }
+
+        form {
+            width: fit-content;
+            margin-top: 20px;
+            padding: 50px;
+            border: 1px solid lawngreen;
+        }
+
+        .input {
+            border: none;
+            color: lightslategray;
+            font-size: 25px;
+            padding: 16px 32px;
+            display: block;
+            width: 100%;
+        }
+
+        .input::placeholder {
+            text-align: center;
+            color: lightslategray;
+        }
+
+        .input:focus {
+            outline-color: purple;
+        }
+
+        .Save {
+            color: blue;
+            background-color: white;
+            height: 30px;
+            border: none;
+            margin-top: 50px;
+        }
+
+        .Clear {
+            color: blue;
+            height: 50px;
+            width: 200px;
+            font-size: 16px;
+            background: white;
+            border: none;
+            margin-top: 50px;
+            border-radius: 20px 0 20px 0;
+        }
+
+        small {
+            color: lightgray;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task Tracker Web Application</h1>
+
+    <form id="form" method="post">
+        <input type="textarea" rows="5" cols="50" class="input" id="input" placeholder="Enter Tasks" autocomplete="off">
+
+        <center>
+            <input type="submit" class="Save" id="Save" value="Save Task"><br>
+            <!--Enable 'Enter' Button For Nextline And Save Task Button For Storing It In MySql Database<br>-->
+            <input type="button" class="Clear" id="Clear" value="Clear All Tasks">
+        </center>
+    </form>
+    <div class="Tasks_Frame" style="margin-top: 50px;">
+        <?php include 'Display_Tasks.php'; ?>
+    </div>
+    <small>
+        Click Left Mouse Button For Striking Out Tasks Completed.
+        <br>
+        Click Right Mouse Button To Edit And Delete Tasks.
+    </small>
+    <p style="display: inline-flex; align-items: center; margin-top: 50px; color: yellow" onclick="Logout()">
+        <img src="Logout Button.png" height="25px" style="background: white; margin-right: 10px;" onclick="Logout()">
+        Logout
+    </p>
+    
+    <script>
+        function Logout(){
+            window.location.href="Logout.php";
+        }
+
+        function Store(){
+            document.getElementById("form").submit();
+        }
+
+        function EditTask(TaskIndex) {
+            var EditedTask = prompt("Enter Edited Task:");
+            if (EditedTask !== null && EditedTask.trim() !== "") {
+                
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            window.location.reload();
+                        } else {
+                            alert("Error Updating Task: " + xhr.responseText);
+                        }
+                    }
+                };
+                xhr.open("POST", "Edit_Task.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("Task_index=" + TaskIndex + "&edited_Task=" + encodeURIComponent(EditedTask));
+            }
+        }
+    
+        function DeleteTask(TaskIndex) {
+            if (confirm("Are You Sure You Want to Delete This Task?")) {
+                
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            window.location.reload();
+                        } else {
+                            alert("Error Deleting Task: " + xhr.responseText);
+                        }
+                    }
+                };
+                xhr.open("POST", "Delete_Task.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("Task_index=" + TaskIndex);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User Account</title>
+    <style>
+        body {
+            background: darkviolet;
+            margin: auto;
+            text-align: center; align-items: center; justify-content: center;
+            font-variant: small-caps; font-style: normal;
+        }
+        
+        h1 {
+            margin: auto;
+            margin-top: 50px; text-align: center;
+            padding: 20px; border: 3px solid lawngreen; width: fit-content;
+        }
+
+        form {
+            display: block; margin: auto; width: fit-content;
+            margin-top: 50px;
+            padding: 20px; border: 3px solid lawngreen;
+        }
+
+        input, button {
+            font-variant: small-caps;
+            padding: 10px; margin: 20px;
+        }
+
+        label {
+            margin: auto;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Delete User Account</h1>
+    <form action="delete_user.php" method="get">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required><br>
+        <button style="color: lavender; background: blue; border: transparent" type="submit">Delete Account</button>
+    </form>
+</body>
+</html>

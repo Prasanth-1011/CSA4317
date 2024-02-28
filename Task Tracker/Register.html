@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+        body {
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: darkviolet;
+        }
+
+        h1 {
+            padding: 20px;
+            margin-top: 50px;
+            color: lawngreen;
+        }
+
+        form {
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+            font-size: 20px;
+            padding: 40px;
+            width: 400px;
+            height: fit-content;
+            background: white;
+            border: 5px solid lawngreen;
+            border-radius: 50px;
+        }
+
+        .Box {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 10px;
+
+        }
+
+        label {
+            font-family: 'Poppins', sans-serif;
+            font-size: medium;
+            padding: 10px;
+            flex: 0 0 90px;
+            margin-right: 10px;
+        }
+
+        .Parameter {
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            background-color: lightgrey;
+            padding: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 0 15px 0 15px;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            background: blue;
+            color: white;
+            height: 50px;
+            width: 100px;
+            margin-top: 50px;
+        }
+
+        .Bounce {
+            height: 75px;
+            overflow: hidden;
+            position: relative;
+            justify-content: center;
+        }
+
+        .Bounce h1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
+            animation: bouncing-text 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bouncing-text {
+            0% {
+                transform: translateX(20%);
+            }
+
+            100% {
+                transform: translateX(-25%);
+            }
+        }
+
+        .Sum:hover {
+            height: 60px; width: auto; font-size: medium;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 25px; padding: 20px" class="Bounce">
+        <h1 style="font-family: 'Poppins', sans-serif;">Welcome We're Delighted To Have You Here!</h1>
+    </div>
+
+    <form method="post" action="Register.php">
+        <div style="margin-top: 20px" class="Box">
+            <label for="username">Username</label>
+            <input class="Parameter" type="text" id="username" name="username" placeholder="Enter Username" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="phone">Phone</label>
+            <input class="Parameter" type="number" id="phone" name="phone" placeholder="Enter Phone Number" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="email">Mail</label>
+            <input class="Parameter" type="email" id="email" name="email" placeholder="Enter Mail" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="password">Password</label>
+            <input class="Parameter" type="password" id="password" name="password" placeholder="Enter Password" required>
+        </div>
+        <br>
+        <input onclick="validateRegistration()" class="Sum" style="height: 40px ;width: 80px; color: white; background: blue; border: transparent; margin-top: 30px;" type="submit" value="Register">
+
+    </form>
+    
+    <script>
+        function validateRegistration() {
+            // Get input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var email = document.getElementById('email').value;
+
+            // Simple validation
+            if (username === "" || password === "" || email === "") {
+                alert("Please Enter All Fields Username, Password, And Email.");
+            } else if (!isValidEmail(email)) {
+                alert("Please Enter Some Valid Mail Address.");
+            }  else if (!isValidUsername(username)) {
+                alert("Please Enter Valid Username.");
+            }
+        }
+
+        function isValidEmail(email) {
+            var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidUsername(username) {
+            var usernameRegex = /^[A-Z]{1}[a-z]*((\s|-)[A-Z]{1}[a-z]*)*$/;
+            return usernameRegex.test(username);
+        }
+    </script>
+
+</body>
+
+</html>

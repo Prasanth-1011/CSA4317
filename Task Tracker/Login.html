@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: darkviolet;
+        }
+
+        h1 {
+            padding: 20px;
+            margin-top: 50px;
+            color: lawngreen;
+        }
+
+        form {
+            display: block;
+            margin: auto;
+            margin-top: 40px;
+            font-size: 20px;
+            padding: 40px;
+            width: 400px;
+            height: fit-content;
+            background: white;
+            border: 5px solid lawngreen;
+            border-radius: 50px;
+        }
+
+        .Box {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 10px;
+
+        }
+
+        label {
+            font-family: 'Poppins', sans-serif;
+            font-size: medium;
+            padding: 10px;
+            flex: 0 0 90px;
+            margin-right: 10px;
+        }
+
+        .One {
+            font-family: 'Poppins', sans-serif;
+            width: 200px;
+            background-color: lightgrey;
+            padding: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+            border-radius: 0 15px 0 15px;
+        }
+
+        .Login {
+            font-family: 'Poppins', sans-serif;
+            background: blue;
+            color: white;
+            height: 50px;
+            width: 100px;
+            margin-top: 30px;
+        }
+
+        .Bounce {
+            height: 75px;
+            overflow: hidden;
+            position: relative;
+            justify-content: center;
+        }
+
+        .Bounce h1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
+            animation: bouncing-text 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes bouncing-text {
+            0% {
+                transform: translateX(20%);
+            }
+
+            100% {
+                transform: translateX(-25%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 25px; padding: 20px" class="Bounce">
+        <h1 style="font-family: 'Poppins', sans-serif;">Welcome Back</h1>
+    </div>
+
+    <form method="post" action="Authenticate_User.php">
+        <div style="margin-top: 20px" class="Box">
+            <label for="username">Username</label>
+            <input class="One" type="text" id="username" name="username" placeholder="Enter Username" required>
+        </div>
+        <br>
+
+        <div class="Box">
+            <label for="password">Password</label>
+            <input class="One" type="password" id="password" name="password" placeholder="Enter Password" required>
+        </div>
+        <br>
+
+        <input type="submit" class="Login" value="Login">
+    </form>
+
+</body>
+
+</html>
