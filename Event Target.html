@@ -1,0 +1,127 @@
+<html>
+
+<head>
+    <title>Event Target</title>
+    <link rel="icon" href="">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Poppins';
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            color: white;
+            background: black;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .Wallpaper {
+            width: 1000px;
+            height: 150px;
+        }
+
+        .Name {
+            margin-top: 25px;
+        }
+
+        .Click {
+            width: 60px;
+            border: 0px;
+            height: 40px;
+            color: white;
+            margin: 25px 5px;
+            font-size: large;
+            background-image: linear-gradient(to left, red, black, black, red);
+        }
+
+        button:hover {
+            background-image: linear-gradient(to left, blue, black, black, blue);
+        }
+
+        @media screen and (max-width: 960px) {
+            .Wallpaper {
+                width: 500px;
+                height: 75px;
+            }
+
+            .Name {
+                font-size: x-large;
+            }
+
+            .Click {
+                width: 45px;
+                height: 30px;
+                font-size: medium;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .Wallpaper {
+                width: 250px;
+                height: 50px;
+            }
+
+            .Name {
+                font-size: large;
+            }
+
+            .Click {
+                width: 45px;
+                height: 30px;
+                font-size: small;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img class="Wallpaper" src="https://github.com/Prasanth-1017/Pictures/blob/main/Web%20Series%20Casts/IMG_20250702_115505.png?raw=true" alt="Logo">
+    </div>
+    
+    <h1 class="Name">Series Cast</h1>
+
+    <div class="Image">
+        <img class="Cast">
+    </div>
+
+    <div class="Container">
+        <button class="Click" onclick="Update(event)">Joel</button>
+        <button class="Click" onclick="Update(event)">Ellie</button>
+        <button class="Click" onclick="Update(event)">Dina</button>
+        <button class="Click" onclick="Update(event)">Jesse</button>
+    </div>
+    <script>
+        let Characters = {
+            "Joel": "Pedro Pascal",
+            "Ellie": "Bella Ramsey",
+            "Dina": "Isabela Merced",
+            "Jesse": "Young Mazino"
+        }
+
+        let Pictures = {
+            "Joel": "https://github.com/Prasanth-1017/Pictures/blob/main/Web%20Series%20Casts/IMG_20250702_105410.png?raw=true",
+            "Ellie": "https://github.com/Prasanth-1017/Pictures/blob/main/Web%20Series%20Casts/IMG_20250702_111630.png?raw=true",
+            "Dina": "https://github.com/Prasanth-1017/Pictures/blob/main/Web%20Series%20Casts/IMG_20250702_111730.png?raw=true",
+            "Jesse": "https://github.com/Prasanth-1017/Pictures/blob/main/Web%20Series%20Casts/IMG_20250702_012230.png?raw=true"
+        };
+
+        let Cast = document.querySelector(".Name").textContent;
+        function Update(event) {
+            Cast = event.target.textContent;
+            document.querySelector(".Name").textContent = Characters[Cast];
+            document.querySelector(".Cast").width = 270;
+            document.querySelector(".Cast").height = 270;
+            document.querySelector(".Cast").style.margin = 25;
+            document.querySelector(".Cast").src = Pictures[Cast];
+        }
+    </script>
+</body>
+
+</html>
